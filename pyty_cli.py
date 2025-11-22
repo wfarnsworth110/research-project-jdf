@@ -46,7 +46,7 @@ def run_pyty(json_input):
         tmp_path = tmp.name
     
     print(f"[yellow]Running PyTy on input...[/yellow]")
-    subprocess.run(["python3", "pyty_predict.py", "--input", tmp_path])
+    subprocess.run(["python3", "src/pyty_predict.py", "--input", tmp_path])
 
     Path(tmp_path).unlink(missing_ok=True)
 
