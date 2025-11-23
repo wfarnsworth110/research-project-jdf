@@ -19,6 +19,7 @@ MYPY_ERROR_RE = re.compile(
     r"^(?P<file>.*?):(?P<line>\d+):(?P<col>\d+):\s*error:\s*(?P<message>.*?)(?:\s+\[(?P<code>[^\]]+)\])?$"
 )
 
+
 def run_mypy_on_file(path: Path) -> str:
     """Run mypy on the given file and return stdout as a string."""
     try:
@@ -31,9 +32,10 @@ def run_mypy_on_file(path: Path) -> str:
     except FileNotFoundError:
         print("Error: `mypy` is not installed or not on PATH.", file=sys.stderr)
         sys.exit(1)
-    
+
     output = (result.stdout or "") + (result.stderr or "")
     return output
+
 
 def extract_error_info(
     mypy_output: str, source_path: Path, explicit_source: Optional[str] = None
@@ -45,7 +47,7 @@ def extract_error_info(
     Returns:
         dict with keys: rule_id, message, warning_line, source_code or None
         if there are no issues (Success: no issues found ...).
-    
+
     Raises:
         ValueError: if output doesn't contain success line or parseable error.
     """
@@ -62,7 +64,7 @@ def extract_error_info(
         message = match.group("message").strip()
         code = match.group("code")
 
-        # Use mypy's code (ie [name-defined] as "rule_id" if present,
+        # Use mypy's code (e.g. [name-defined]) as "rule_id" if present,
         # otherwise fall back to a generic one
         rule_id = code if code else "mypy-error"
 
@@ -79,25 +81,26 @@ def extract_error_info(
             except OSError:
                 source_text = ""
                 source_lines = []
-        
+
         if 1 <= line_no <= len(source_lines):
             warning_line = source_lines[line_no - 1].rstrip("\n")
         else:
             warning_line = ""
-        
+
         return {
             "rule_id": rule_id,
             "message": message,
             "warning_line": warning_line,
             "source_code": source_text,
         }
-    
+
     # No parseable error -> either clean code or some unexpected output
     if "Success: no issues found" in mypy_output:
         return None
-    
+
     # If we get here, the output was not a clean run or a parseable error line
     raise ValueError(mypy_output.strip() or "No usable mypy output.")
+
 
 def write_pyty_input_json(error_info: Dict[str, Any]) -> Path:
     """PyTy input JSON -> temporary file and return its path."""
@@ -117,6 +120,7 @@ def write_pyty_input_json(error_info: Dict[str, Any]) -> Path:
         )
     return Path(tmp.name)
 
+
 def run_pyty(json_path: Path, model_name: str, model_path: str) -> int:
     """
     Invoke PyTy's PERSONAL MODE prediction script in this repo.
@@ -132,7 +136,7 @@ def run_pyty(json_path: Path, model_name: str, model_path: str) -> int:
             file=sys.stderr,
         )
         return 1
-    
+
     cmd = [
         sys.executable,
         str(PYTY_SCRIPT),
@@ -147,36 +151,37 @@ def run_pyty(json_path: Path, model_name: str, model_path: str) -> int:
     print("Running PyTy on input...")
     result = subprocess.run(
         cmd,
-        cwd=str(SRC_DIR), # match original instructions (from from ./src/)
+        cwd=str(SRC_DIR),  # match original instructions (run from ./src/)
         text=True,
         capture_output=True,
     )
 
-    # PyTy output to visibility
+    # Stream PyTy's output for visibility
     if result.stdout:
         print(result.stdout)
     if result.stderr:
         print(result.stderr, file=sys.stderr)
-    
+
     if result.returncode != 0:
         print(f"PyTy exited with code {result.returncode}", file=sys.stderr)
-    
+
     return result.returncode
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Interactive CLI wrapper for PyTy PERSONAL MODE.\n"
             "Given a Python file or snippet, this tool:\n"
-            "   1) runs mypy to find a typer error,\n"
-            "   2) builds the JSON required by PyTy, and \n"
+            "   1) runs mypy to find a type error,\n"
+            "   2) builds the JSON required by PyTy, and\n"
             "   3) invokes PyTy's pyty_predict.py with the trained model."
         )
     )
 
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument(
-        "--file"
+        "--file",
         "-f",
         type=str,
         help="Path to a Python file to analyze.",
@@ -200,7 +205,10 @@ def parse_args() -> argparse.Namespace:
         "-lm",
         type=str,
         default=DEFAULT_MODEL_PATH,
-        help=f"Model checkpoint path relative to src/ default: {DEFAULT_MODEL_NAME}.",
+        help=(
+            "Model checkpoint path relative to src/ "
+            f"(default: {DEFAULT_MODEL_PATH})."
+        ),
     )
     parser.add_argument(
         "--keep-temp",
@@ -210,7 +218,8 @@ def parse_args() -> argparse.Namespace:
 
     return parser.parse_args()
 
-def main():
+
+def main() -> None:
     args = parse_args()
 
     temp_source_path: Optional[Path] = None
@@ -241,7 +250,7 @@ def main():
 
     # 2. Run mypy
     mypy_output = run_mypy_on_file(source_path)
-    
+
     # 3. Extract error information
     try:
         error_info = extract_error_info(
@@ -261,11 +270,11 @@ def main():
         if temp_source_path and not args.keep_temp:
             temp_source_path.unlink(missing_ok=True)
         sys.exit(0)
-    
+
     # 4. Write PyTy input JSON
     json_path = write_pyty_input_json(error_info)
     print(f"Generated PyTy input JSON at: {json_path}")
-    
+
     # 5. Run PyTy
     exit_code = run_pyty(
         json_path=json_path,
@@ -278,8 +287,9 @@ def main():
         json_path.unlink(missing_ok=True)
         if temp_source_path:
             temp_source_path.unlink(missing_ok=True)
-    
+
     sys.exit(exit_code)
+
 
 if __name__ == "__main__":
     main()
