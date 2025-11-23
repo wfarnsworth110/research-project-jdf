@@ -7,11 +7,6 @@ import tempfile
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-# TODO Unplug
-from rich import print, box
-from rich.console import Console
-from rich.table import Table
-
 REPO_ROOT = Path(__file__).resolve().parent
 SRC_DIR = REPO_ROOT / "src"
 PYTY_SCRIPT = SRC_DIR / "pyty_predict.py"
@@ -23,9 +18,6 @@ DEFAULT_MODEL_PATH = "t5base_final/checkpoint-1190"
 MYPY_ERROR_RE = re.compile(
     r"^(?P<file>.*?):(?P<line>\d+):(?P<col>\d+):\s*error:\s*(?P<message>.*?)(?:\s+\[(?P<code>[^\]]+)\])?$"
 )
-
-# TODO Unplug
-console = Console()
 
 def run_mypy_on_file(path: Path) -> str:
     """Run mypy on the given file and return stdout as a string."""
@@ -42,29 +34,6 @@ def run_mypy_on_file(path: Path) -> str:
     
     output = (result.stdout or "") + (result.stderr or "")
     return output
-
-# TODO Unplug
-def detect_type_error(filepath):
-    result = subprocess.run(["mypy", filepath], capture_output=True, text=True)
-    output = result.stdout.strip()
-
-    if not output:
-        print("[bold green]No type errors found by mypy.[/bold green]")
-        return None
-    
-    lines = output.splitlines()
-    first_error = lines[0]
-    try:
-        location, message = first_error.split(":", maxsplit=2)[1:]
-        line_number = int(location.strip())
-        return {
-            "rule_id": "Mypy Error",
-            "message": message.strip(),
-            "warning_line": line_number
-        }
-    except Exception as e:
-        print(f"[bold red]Failed to parse mypy output:[/bold red] {first_error}")
-        return None
 
 def extract_error_info(
     mypy_output: str, source_path: Path, explicit_source: Optional[str] = None
@@ -147,15 +116,6 @@ def write_pyty_input_json(error_info: Dict[str, Any]) -> Path:
             indent=2,
         )
     return Path(tmp.name)
-
-# TODO Unplug
-def build_input_json(source_code, error_data):
-    return {
-        "rule_id": error_data["rule_id"],
-        "message": error_data["message"],
-        "warning_line": error_data["warning_line"],
-        "source_code": source_code
-    }
 
 def run_pyty(json_path: Path, model_name: str, model_path: str) -> int:
     """
@@ -250,7 +210,6 @@ def parse_args() -> argparse.Namespace:
 
     return parser.parse_args()
 
-# TODO Alter main
 def main():
     args = parse_args()
 
