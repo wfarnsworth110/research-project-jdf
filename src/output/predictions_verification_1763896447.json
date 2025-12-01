@@ -1,0 +1,360 @@
+{
+  "input": {
+    "rule_id": "Unbound name [10]",
+    "message": " Name `y_test` is used but not defined in the current scope.",
+    "warning_line": "    results = mean_squared_error(y_test, model.predict(X_test))",
+    "source_code": "    # Run some test predictions\n    results = mean_squared_error(y_test, model.predict(X_test))\n"
+  },
+  "results": [
+    {
+      "index": 0,
+      "prediction": "# Run some test predictions \n var results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n var results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.008126497268676758
+    },
+    {
+      "index": 1,
+      "prediction": "# Run some test predictions \n __results = mean_squared_error(__results, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n __results = mean_squared_error(__results, model.predict(X_test)) \n",
+      "time_seconds": 0.00017261505126953125
+    },
+    {
+      "index": 2,
+      "prediction": "# Run some test predictions \n _y_test_results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test_results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00015473365783691406
+    },
+    {
+      "index": 3,
+      "prediction": "# Run some test predictions \n _y_test_error = _y_test_error \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test_error = _y_test_error \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001468658447265625
+    },
+    {
+      "index": 4,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00014829635620117188
+    },
+    {
+      "index": 5,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001392364501953125
+    },
+    {
+      "index": 6,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, X_test): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, X_test): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001468658447265625
+    },
+    {
+      "index": 7,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, X_test): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, X_test): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013589859008789062
+    },
+    {
+      "index": 8,
+      "prediction": "# Run some test predictions \n _y_test = _y_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test = _y_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00014495849609375
+    },
+    {
+      "index": 9,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001385211944580078
+    },
+    {
+      "index": 10,
+      "prediction": "# Run some test predictions \n if isinstance(y_test, model.predict(X_test)): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if isinstance(y_test, model.predict(X_test)): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013828277587890625
+    },
+    {
+      "index": 11,
+      "prediction": "# Run some test predictions \n _y_test__ = _y_test__ \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test__ = _y_test__ \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013685226440429688
+    },
+    {
+      "index": 12,
+      "prediction": "# Run some test predictions \n y_test_results = mean_squared_error(x_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test_results = mean_squared_error(x_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001354217529296875
+    },
+    {
+      "index": 13,
+      "prediction": "# Run some test predictions \n x_predict = x_predict \n results = mean_squared_error(x_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n x_predict = x_predict \n results = mean_squared_error(x_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001361370086669922
+    },
+    {
+      "index": 14,
+      "prediction": "# Run some test predictions \n y_test_results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test_results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001361370086669922
+    },
+    {
+      "index": 15,
+      "prediction": "# Run some test predictions \n _y_test = x_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test = x_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00014138221740722656
+    },
+    {
+      "index": 16,
+      "prediction": "# Run some test predictions \n __six = __six \n results = mean_squared_error(__six, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n __six = __six \n results = mean_squared_error(__six, model.predict(X_test)) \n",
+      "time_seconds": 0.0001380443572998047
+    },
+    {
+      "index": 17,
+      "prediction": "# Run some test predictions \n __six = y_test \n results = mean_squared_error(__six, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n __six = y_test \n results = mean_squared_error(__six, model.predict(X_test)) \n",
+      "time_seconds": 0.00013399124145507812
+    },
+    {
+      "index": 18,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001404285430908203
+    },
+    {
+      "index": 19,
+      "prediction": "# Run some test predictions \n _y_test = y_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test = y_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001342296600341797
+    },
+    {
+      "index": 20,
+      "prediction": "# Run some test predictions \n _y_test = X_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test = X_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001399517059326172
+    },
+    {
+      "index": 21,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001361370086669922
+    },
+    {
+      "index": 22,
+      "prediction": "# Run some test predictions \n _y_test_error = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test_error = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013494491577148438
+    },
+    {
+      "index": 23,
+      "prediction": "# Run some test predictions \n _y_test__ = X_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test__ = X_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00014019012451171875
+    },
+    {
+      "index": 24,
+      "prediction": "# Run some test predictions \n _y_test_ = _y_test_ \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test_ = _y_test_ \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013494491577148438
+    },
+    {
+      "index": 25,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013875961303710938
+    },
+    {
+      "index": 26,
+      "prediction": "# Run some test predictions \n _y_test = Y_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test = Y_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013303756713867188
+    },
+    {
+      "index": 27,
+      "prediction": "# Run some test predictions \n _y_test__ = mean_squared_error(_y_test, model.predict(X_test)) \n results = mean_squared_error(_y_test__, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test__ = mean_squared_error(_y_test, model.predict(X_test)) \n results = mean_squared_error(_y_test__, model.predict(X_test)) \n",
+      "time_seconds": 0.00013828277587890625
+    },
+    {
+      "index": 28,
+      "prediction": "# Run some test predictions \n python_results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n python_results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00015020370483398438
+    },
+    {
+      "index": 29,
+      "prediction": "# Run some test predictions \n _y_test__ = x_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test__ = x_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013875961303710938
+    },
+    {
+      "index": 30,
+      "prediction": "# Run some test predictions \n _y_test__ = mean_squared_error(_y_test, model.predict(X_test)) \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test__ = mean_squared_error(_y_test, model.predict(X_test)) \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001494884490966797
+    },
+    {
+      "index": 31,
+      "prediction": "# Run some test predictions \n __results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n __results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001361370086669922
+    },
+    {
+      "index": 32,
+      "prediction": "# Run some test predictions \n _y_test_ = X_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n _y_test_ = X_test \n results = mean_squared_error(_y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013494491577148438
+    },
+    {
+      "index": 33,
+      "prediction": "# Run some test predictions \n pytorch_results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n pytorch_results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013303756713867188
+    },
+    {
+      "index": 34,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013875961303710938
+    },
+    {
+      "index": 35,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test): \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001342296600341797
+    },
+    {
+      "index": 36,
+      "prediction": "# Run some test predictions \n y_test_model = Y_test \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test_model = Y_test \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001347064971923828
+    },
+    {
+      "index": 37,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test): \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00014400482177734375
+    },
+    {
+      "index": 38,
+      "prediction": "# Run some test predictions \n if not y_test: \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not y_test: \n <DED> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013494491577148438
+    },
+    {
+      "index": 39,
+      "prediction": "# Run some test predictions \n pytorch_error = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n pytorch_error = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.000133514404296875
+    },
+    {
+      "index": 40,
+      "prediction": "# Run some test predictions \n y_test_model = y_test \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test_model = y_test \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001347064971923828
+    },
+    {
+      "index": 41,
+      "prediction": "# Run some test predictions \n y_test_results = mean_squared_error(model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test_results = mean_squared_error(model.predict(X_test)) \n",
+      "time_seconds": 0.00013518333435058594
+    },
+    {
+      "index": 42,
+      "prediction": "# Run some test predictions \n y_test.results = mean_squared_error(model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test.results = mean_squared_error(model.predict(X_test)) \n",
+      "time_seconds": 0.0001399517059326172
+    },
+    {
+      "index": 43,
+      "prediction": "# Run some test predictions \n y_test_error = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n y_test_error = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00013518333435058594
+    },
+    {
+      "index": 44,
+      "prediction": "# Run some test predictions \n if not y_test: \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not y_test: \n <IND> results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00015735626220703125
+    },
+    {
+      "index": 45,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n \n var results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n \n var results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001399517059326172
+    },
+    {
+      "index": 46,
+      "prediction": "# Run some test predictions \n x_predict = x_predict \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n x_predict = x_predict \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001354217529296875
+    },
+    {
+      "index": 47,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n <IND> var results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, X_test): \n <IND> var results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.0001361370086669922
+    },
+    {
+      "index": 48,
+      "prediction": "# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, x_test): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n if not isinstance(y_test, model.predict(X_test)): \n <IND> if not isinstance(y_test, x_test): \n \n results = mean_squared_error(y_test, model.predict(X_test)) \n",
+      "time_seconds": 0.00014519691467285156
+    },
+    {
+      "index": 49,
+      "prediction": "# Run some test predictions \n __results = mean_squared_error(__result, model.predict(X_test)) \n",
+      "validated": false,
+      "checker_output": "Heuristic: target 'y_test' not defined in candidate.\nCandidate snippet:\n# Run some test predictions \n __results = mean_squared_error(__result, model.predict(X_test)) \n",
+      "time_seconds": 0.00013494491577148438
+    }
+  ]
+}
